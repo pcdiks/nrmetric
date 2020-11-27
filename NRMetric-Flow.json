@@ -429,8 +429,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 500,
-        "y": 1760,
+        "x": 640,
+        "y": 1700,
         "wires": [
             [
                 "b03ef6f5.cea938",
@@ -1913,8 +1913,7 @@
         "y": 1980,
         "wires": [
             [
-                "cbed5d3e.7743d",
-                "669b09f8.3e0828"
+                "cbed5d3e.7743d"
             ]
         ]
     },
@@ -3538,37 +3537,10 @@
         "to": "",
         "reg": false,
         "x": 450,
-        "y": 1440,
+        "y": 1460,
         "wires": [
             [
                 "b03ef6f5.cea938"
-            ]
-        ]
-    },
-    {
-        "id": "231b41b2.9b214e",
-        "type": "change",
-        "z": "cb01a5f.948b458",
-        "name": "Set Brightness to 40",
-        "rules": [
-            {
-                "t": "set",
-                "p": "brightness",
-                "pt": "msg",
-                "to": "40",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 420,
-        "y": 1720,
-        "wires": [
-            [
-                "60cca090.1e18d"
             ]
         ]
     },
@@ -3593,7 +3565,7 @@
         "y": 1720,
         "wires": [
             [
-                "231b41b2.9b214e"
+                "37e74d81.040352"
             ]
         ]
     },
@@ -3615,64 +3587,10 @@
         ]
     },
     {
-        "id": "e85b6537.b4b3d8",
-        "type": "change",
-        "z": "cb01a5f.948b458",
-        "name": "Set Brightness to 30",
-        "rules": [
-            {
-                "t": "set",
-                "p": "brightness",
-                "pt": "msg",
-                "to": "30",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 420,
-        "y": 1680,
-        "wires": [
-            [
-                "60cca090.1e18d"
-            ]
-        ]
-    },
-    {
-        "id": "6f4749b.6c6ceb8",
-        "type": "change",
-        "z": "cb01a5f.948b458",
-        "name": "Set Brightness to 10",
-        "rules": [
-            {
-                "t": "set",
-                "p": "brightness",
-                "pt": "msg",
-                "to": "10",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 420,
-        "y": 1640,
-        "wires": [
-            [
-                "60cca090.1e18d"
-            ]
-        ]
-    },
-    {
         "id": "b9d583d0.95537",
         "type": "poll-state",
         "z": "cb01a5f.948b458",
-        "name": "Naar bed",
+        "name": "Dynamic Brightness",
         "server": "e4d2fd4d.1afaf",
         "version": 1,
         "exposeToHomeAssistant": false,
@@ -3688,50 +3606,20 @@
         ],
         "updateinterval": "60",
         "updateIntervalUnits": "seconds",
-        "outputinitially": false,
-        "outputonchanged": false,
-        "entity_id": "input_boolean.naarbedactivated",
-        "state_type": "str",
-        "halt_if": "on",
-        "halt_if_type": "str",
+        "outputinitially": true,
+        "outputonchanged": true,
+        "entity_id": "input_number.brightness",
+        "state_type": "num",
+        "halt_if": "",
+        "halt_if_type": "num",
         "halt_if_compare": "is",
-        "outputs": 2,
-        "x": 80,
-        "y": 1560,
+        "outputs": 1,
+        "x": 110,
+        "y": 1500,
         "wires": [
             [
-                "f47d3301.256fe",
-                "8133f212.ecf73"
-            ],
-            [
-                "8133f212.ecf73"
-            ]
-        ]
-    },
-    {
-        "id": "bb6de422.1e2948",
-        "type": "change",
-        "z": "cb01a5f.948b458",
-        "name": "Set Brightness to 0",
-        "rules": [
-            {
-                "t": "set",
-                "p": "brightness",
-                "pt": "msg",
-                "to": "0",
-                "tot": "num"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 430,
-        "y": 1600,
-        "wires": [
-            [
-                "60cca090.1e18d"
+                "f0c4c9f0.6ad128",
+                "a04620b5.3be1d"
             ]
         ]
     },
@@ -3764,7 +3652,7 @@
         "id": "f47d3301.256fe",
         "type": "change",
         "z": "cb01a5f.948b458",
-        "name": "Set Payload",
+        "name": "Brightness to 0",
         "rules": [
             {
                 "t": "set",
@@ -3772,6 +3660,13 @@
                 "pt": "msg",
                 "to": "192.168.55.24",
                 "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
             }
         ],
         "action": "",
@@ -3779,91 +3674,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 230,
+        "x": 240,
         "y": 1600,
         "wires": [
             [
-                "bb6de422.1e2948"
+                "60cca090.1e18d"
             ]
-        ]
-    },
-    {
-        "id": "669b09f8.3e0828",
-        "type": "change",
-        "z": "cb01a5f.948b458",
-        "name": "Set Payload",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "192.168.55.24",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 1640,
-        "wires": [
-            [
-                "6f4749b.6c6ceb8"
-            ]
-        ]
-    },
-    {
-        "id": "118e9886.e5f027",
-        "type": "change",
-        "z": "cb01a5f.948b458",
-        "name": "Set Payload",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "192.168.55.24",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 1680,
-        "wires": [
-            [
-                "e85b6537.b4b3d8"
-            ]
-        ]
-    },
-    {
-        "id": "6236e82a.e44eb8",
-        "type": "change",
-        "z": "cb01a5f.948b458",
-        "name": "Set Payload",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "192.168.55.24",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 1720,
-        "wires": [
-            []
         ]
     },
     {
@@ -3887,16 +3703,177 @@
         "y": 1680,
         "wires": [
             [
-                "118e9886.e5f027"
+                "31398953.c238d6"
             ]
         ]
     },
     {
-        "id": "8133f212.ecf73",
+        "id": "f0c4c9f0.6ad128",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Dynamic Brightness",
+        "rules": [
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 1560,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "c6c34a76.7f4cf8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Brightness to 10",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "10",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 1640,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "31398953.c238d6",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Brightness to 30",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "30",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 1680,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "37e74d81.040352",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Brightness to 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "40",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 1720,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "6ce8582f.80dd98",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "10",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "192.168.55.24",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1640,
+        "wires": [
+            [
+                "c6c34a76.7f4cf8"
+            ]
+        ]
+    },
+    {
+        "id": "a04620b5.3be1d",
         "type": "debug",
         "z": "cb01a5f.948b458",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3904,8 +3881,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 230,
-        "y": 1540,
+        "x": 450,
+        "y": 1520,
         "wires": []
     },
     {
