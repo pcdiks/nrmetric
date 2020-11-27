@@ -1,0 +1,3968 @@
+[
+    {
+        "id": "cb01a5f.948b458",
+        "type": "tab",
+        "label": "NRMetric",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "284fbaaf.5e0436",
+        "type": "debug",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "active": false,
+        "console": "false",
+        "complete": "true",
+        "x": 1530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "402fdc2f.0a83c4",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Every 30m",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1800",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 115,
+        "y": 450,
+        "wires": [
+            [
+                "31e9334f.68831c"
+            ]
+        ]
+    },
+    {
+        "id": "31e9334f.68831c",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "Darksky",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.darksky.net/forecast/d4486b7aed4b744c7640ca7cf8abdcc9/52.529,6.4134?exclude=hourly,alerts,flags&units=ca",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 271.0000114440918,
+        "y": 449.2500190734863,
+        "wires": [
+            [
+                "eab76bf.dd9df98"
+            ]
+        ]
+    },
+    {
+        "id": "eab76bf.dd9df98",
+        "type": "json",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "x": 459.5000305175781,
+        "y": 449.0000190734863,
+        "wires": [
+            [
+                "b479afeb.8eff9",
+                "672c2dac.dd2e94",
+                "1f5351ad.0f100e",
+                "47fbbbc0.f79dd4",
+                "b7de29a0.0aaf38",
+                "8bcacc81.e2028",
+                "de56edc7.e75bc",
+                "2d30f5f3.61225a",
+                "5b800211.20df6c",
+                "bc16baf2.efbd88",
+                "64539b92.5b3aa4",
+                "b8abecdf.53e29",
+                "811dc8f9.1a7118",
+                "ec66636d.dfd75",
+                "b364a30c.520cb"
+            ]
+        ]
+    },
+    {
+        "id": "37971688.38b6ea",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "\" \" & $round(\t   msg.payload.daily.data[0].temperatureMin,\t   1\t) & \" C\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 460,
+        "wires": [
+            [
+                "974805df.99be28"
+            ]
+        ]
+    },
+    {
+        "id": "974805df.99be28",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "11",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 460,
+        "wires": [
+            [
+                "16c511e5.ed85be"
+            ]
+        ]
+    },
+    {
+        "id": "cfbe1512.27f158",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "\" \" & $round(\t   msg.payload.daily.data[0].temperatureMax,\t   1\t) & \" C\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 500,
+        "wires": [
+            [
+                "c7f52b42.37f9d8"
+            ]
+        ]
+    },
+    {
+        "id": "c7f52b42.37f9d8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "10",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 500,
+        "wires": [
+            [
+                "42d54382.a356dc"
+            ]
+        ]
+    },
+    {
+        "id": "49d0d276.097f4c",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 870,
+        "y": 1380,
+        "wires": [
+            [
+                "1ef3757c.8a5f0b",
+                "14539d4b.6dda03"
+            ]
+        ]
+    },
+    {
+        "id": "b03ef6f5.cea938",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Core",
+        "func": "// This topic sent by all providers to update the data in the context\nif (msg.topic===\"provider_update\") {\n\n    context.set(msg.display.provider,{\"content\" : msg.display.content, \"icon\": msg.display.icon, \"color\": msg.display.color});\n    node.status({fill:\"blue\",shape:\"ring\",text:\"Provider \"+msg.display.provider+\" stored\"});\n}\n\nif (msg.topic===\"brightness_update\"){\n    context.set(\"brightness\", msg.brightness);\n    node.status({fill:\"blue\",shape:\"ring\",text:\"Brightness \" + msg.brightness + \" stored\"});\n\n    msg.url = \"http://\" + msg.payload + \"/brightness?brightness=\" + msg.brightness;\n    msg.payload = \"\";\n    msg.topic = \"maxpage\";\n    node.status({fill:\"blue\",shape:\"ring\",text:msg.topic+\" sent\"});\n    return msg;\n    \n}\n\n// This topic is sent when the recipe is updated\nif (msg.topic===\"recipe_update\") {\n    context.set(\"recipe\",msg.payload);\n    node.status({fill:\"blue\",shape:\"ring\",text:\"Recipe stored\"});\n}\n\n// This topic is triggered by the display when it completes the cycle and requests updated value to be sent#\n// In this case the first page of the recipe is sent\nif (msg.topic===\"update_request\") {\n    var recipe = context.get(\"recipe\");\n    if (recipe!==undefined) {\n        context.set(\"ip\",msg.payload); // save the IP address for later\n        if (recipe!==undefined) {\n            var provider = context.get(recipe.recipe[0].provider);\n            if (provider===undefined) {\n                provider = {\"icon\":0, \"color\":7, \"content\":\"empty\" };\n            }\n            msg.url = \"http://\" + msg.payload + \"/update?id=0&gfx=\" + provider.icon + \"&color=\" + provider.color + \"&duration=\" + recipe.recipe[0].duration + \"&text=\" + provider.content;\n            msg.payload = \"\";\n            msg.topic = \"update|0\";\n            node.status({fill:\"blue\",shape:\"ring\",text:msg.topic+\" sent\"});\n            return msg;\n        }\n    }\n}\n\n// Messages with a pipe in the topic are redirected back from the HTTP request, to trigger the sending of the next page \nif (msg.topic.indexOf(\"|\") !== -1) {\n    var currentPage = parseInt(msg.topic.substring(msg.topic.indexOf(\"|\")+1),10);\n    currentPage++;\n    var recipe = context.get(\"recipe\");\n    if (recipe!==undefined) {\n        if (currentPage===recipe.recipe.length) {\n            // All the pages are sent send the maxpage value and stop\n            msg.url = \"http://\" + context.get(\"ip\") + \"/update?maxpage=\" + (currentPage-1);\n            msg.payload = \"\";\n            msg.topic = \"maxpage\";\n            node.status({fill:\"blue\",shape:\"ring\",text:msg.topic+\" sent\"});\n            return msg;\n        } else {\n            // Send the next page\n            var provider = context.get(recipe.recipe[currentPage].provider);\n            if (provider===undefined) {\n                provider = {\"icon\":0, \"color\":7, \"content\":\"empty\" };\n            }\n            msg.url = \"http://\" + context.get(\"ip\") + \"/update?id=\" + currentPage + \"&gfx=\" + provider.icon + \"&color=\" + provider.color + \"&duration=\" + recipe.recipe[currentPage].duration + \"&text=\" + provider.content;\n            msg.payload = \"\";\n            msg.topic = \"update|\"+currentPage;\n            node.status({fill:\"blue\",shape:\"ring\",text:msg.topic+\" sent\"});\n            return msg;\n        }\n    }\n}\n\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is deployed.\ncontext.set(\"brightness\", 30);",
+        "finalize": "",
+        "x": 644.8998794555664,
+        "y": 1436.7999906539917,
+        "wires": [
+            [
+                "37397a2a.c37e26",
+                "49d0d276.097f4c"
+            ]
+        ]
+    },
+    {
+        "id": "b45ca37c.387ff",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Default",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 2120,
+        "wires": [
+            [
+                "5b4e4d63.65a174"
+            ]
+        ]
+    },
+    {
+        "id": "f69eb571.80ff48",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "provider_update",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1500,
+        "y": 1100,
+        "wires": [
+            [
+                "b03ef6f5.cea938",
+                "284fbaaf.5e0436",
+                "56379a41.57a564"
+            ]
+        ]
+    },
+    {
+        "id": "b479afeb.8eff9",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Today Temp Min",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "today_tempmin",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 460,
+        "wires": [
+            [
+                "37971688.38b6ea"
+            ]
+        ]
+    },
+    {
+        "id": "672c2dac.dd2e94",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Today Temp Max",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "today_tempmax",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 650,
+        "y": 500,
+        "wires": [
+            [
+                "cfbe1512.27f158"
+            ]
+        ]
+    },
+    {
+        "id": "16c511e5.ed85be",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[0].temperatureMin > 0 ? 0 : 4",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 460,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "42d54382.a356dc",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[0].temperatureMax > 0 ? 0 : 4",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 500,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "81d3128a.ec9c8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "recipe_update",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 1760,
+        "wires": [
+            [
+                "b03ef6f5.cea938",
+                "21a83e85.d83922"
+            ]
+        ]
+    },
+    {
+        "id": "c5f10ff4.97b9b",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "192.168.55.24",
+        "payloadType": "str",
+        "x": 130,
+        "y": 1380,
+        "wires": [
+            [
+                "636f35f5.c64f0c"
+            ]
+        ]
+    },
+    {
+        "id": "37397a2a.c37e26",
+        "type": "debug",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "1ef3757c.8a5f0b",
+        "type": "delay",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 764.3999481201172,
+        "y": 1556.8000555038452,
+        "wires": [
+            [
+                "b03ef6f5.cea938"
+            ]
+        ]
+    },
+    {
+        "id": "14539d4b.6dda03",
+        "type": "switch",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "property": "statusCode",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "200",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 1,
+        "x": 1069.8999099731445,
+        "y": 1374.7999992370605,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "95e44701.7e2e58",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Diagnostic log",
+        "func": "msg.payload = \"HTTP error: \"+msg.statusCode;\nmsg.system = 20; // System id, use 1 for Dummy\n//msg.state = 70; // specify if the message is to change system status\nmsg.severity = 1; // 0: information, 1: warning, 2: error\n//msg.email = true; // if separate email should be sent\n//msg.emailtext = \"\"; this a long text which goes into the email\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1246.149917602539,
+        "y": 1376.0499992370605,
+        "wires": [
+            [
+                "549703ca.3d50ac"
+            ]
+        ]
+    },
+    {
+        "id": "549703ca.3d50ac",
+        "type": "link out",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "links": [
+            "13e089a7.73cb46"
+        ],
+        "x": 1381.8999309539795,
+        "y": 1376.0500001907349,
+        "wires": []
+    },
+    {
+        "id": "636f35f5.c64f0c",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Update request",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "update_request",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 379.89986419677734,
+        "y": 1307.2999696731567,
+        "wires": [
+            [
+                "b03ef6f5.cea938"
+            ]
+        ]
+    },
+    {
+        "id": "972d37d8.8998f8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "\" \" & $round(msg.payload.currently.temperature,1) & \" C\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 540,
+        "wires": [
+            [
+                "d8ba8dc8.7296b"
+            ]
+        ]
+    },
+    {
+        "id": "1f5351ad.0f100e",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Current Temp",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "currently_temp",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 540,
+        "wires": [
+            [
+                "972d37d8.8998f8"
+            ]
+        ]
+    },
+    {
+        "id": "46fa1d28.ff03a4",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "msg.payload.currently.temperature > 0 ? 0 : 4",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 540,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "d8ba8dc8.7296b",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "func": "switch (msg.payload.currently.icon) {\n    case \"clear-day\":\n        msg.display.icon = 13;\n        break;\n    case \"clear-night\":\n        msg.display.icon = 14;\n        break;\n    case \"rain\":\n        msg.display.icon = 15;\n        break;\n    case \"snow\":\n        msg.display.icon = 16;\n        break;\n    case \"sleet\":\n        msg.display.icon = 17;\n        break;\n    case \"wind\":\n        msg.display.icon = 18;\n        break;\n    case \"fog\":\n        msg.display.icon = 19;\n        break;\n    case \"cloudy\":\n        msg.display.icon = 20;\n        break;\n    case \"partly-cloudy-day\":\n        msg.display.icon = 21;\n        break;\n    case \"partly-cloudy-night\":\n        msg.display.icon = 22;\n        break;\n    default:\n        msg.display.icon = 13;\n        break;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 540,
+        "wires": [
+            [
+                "46fa1d28.ff03a4"
+            ]
+        ]
+    },
+    {
+        "id": "47fbbbc0.f79dd4",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Today Wind",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "today_wind",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 580,
+        "wires": [
+            [
+                "3a050a81.9050e6"
+            ]
+        ]
+    },
+    {
+        "id": "31baf331.20674c",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 580,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "d4fe1bee.6dff38",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "23",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 580,
+        "wires": [
+            [
+                "31baf331.20674c"
+            ]
+        ]
+    },
+    {
+        "id": "3923e0ac.508b2",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "$round(msg.payload.daily.data[1].temperatureMin,1) & \"C\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 700,
+        "wires": [
+            [
+                "efebc385.e7a0b"
+            ]
+        ]
+    },
+    {
+        "id": "efebc385.e7a0b",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "27",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 700,
+        "wires": [
+            [
+                "3c819948.60b2c6"
+            ]
+        ]
+    },
+    {
+        "id": "c50b8d9e.81f98",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "$round(msg.payload.daily.data[1].temperatureMax,1) & \"C\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 740,
+        "wires": [
+            [
+                "6ced8d24.832f34"
+            ]
+        ]
+    },
+    {
+        "id": "6ced8d24.832f34",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "26",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 740,
+        "wires": [
+            [
+                "f6568784.59ba98"
+            ]
+        ]
+    },
+    {
+        "id": "b7de29a0.0aaf38",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Tomorrow Temp Min",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "tomorrow_tempmin",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 700,
+        "wires": [
+            [
+                "3923e0ac.508b2"
+            ]
+        ]
+    },
+    {
+        "id": "8bcacc81.e2028",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Tomorrow Temp Max",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "tomorrow_tempmax",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 740,
+        "wires": [
+            [
+                "c50b8d9e.81f98"
+            ]
+        ]
+    },
+    {
+        "id": "3c819948.60b2c6",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[1].temperatureMin > 0 ? 0 : 4",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 700,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "f6568784.59ba98",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[1].temperatureMax > 0 ? 0 : 4",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 740,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "de56edc7.e75bc",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Tomorrow Wind",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "tomorrow_wind",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 780,
+        "wires": [
+            [
+                "c262dbc8.bd9838"
+            ]
+        ]
+    },
+    {
+        "id": "745826f7.7be748",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 780,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "9ba5e3fd.228c",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "28",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 780,
+        "wires": [
+            [
+                "745826f7.7be748"
+            ]
+        ]
+    },
+    {
+        "id": "2d30f5f3.61225a",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Tomorrow Date",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "tomorrow_date",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 640,
+        "y": 820,
+        "wires": [
+            [
+                "54c4c9c1.b51308"
+            ]
+        ]
+    },
+    {
+        "id": "971e9135.2853a",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "5",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 820,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "9d53982a.f25778",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "func": "switch (msg.payload.daily.data[1].icon) {\n    case \"clear-day\":\n        msg.display.icon = 13;\n        break;\n    case \"clear-night\":\n        msg.display.icon = 14;\n        break;\n    case \"rain\":\n        msg.display.icon = 15;\n        break;\n    case \"snow\":\n        msg.display.icon = 16;\n        break;\n    case \"sleet\":\n        msg.display.icon = 17;\n        break;\n    case \"wind\":\n        msg.display.icon = 18;\n        break;\n    case \"fog\":\n        msg.display.icon = 19;\n        break;\n    case \"cloudy\":\n        msg.display.icon = 20;\n        break;\n    case \"partly-cloudy-day\":\n        msg.display.icon = 21;\n        break;\n    case \"partly-cloudy-night\":\n        msg.display.icon = 22;\n        break;\n    default:\n        msg.display.icon = 13;\n        break;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 820,
+        "wires": [
+            [
+                "971e9135.2853a"
+            ]
+        ]
+    },
+    {
+        "id": "54c4c9c1.b51308",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "// Update the status with current timestamp\nvar now = new Date();\nnow.setTime(msg.payload.daily.data[1].time*1000);\nvar mm = now.getMonth() < 9 ? \"0\" + (now.getMonth() + 1) : (now.getMonth() + 1); // getMonth() is zero-based\nvar dd  = now.getDate() < 10 ? \"0\" + now.getDate() : now.getDate();\nmsg.display.content = dd + \"-\" + mm;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 860,
+        "y": 820,
+        "wires": [
+            [
+                "9d53982a.f25778"
+            ]
+        ]
+    },
+    {
+        "id": "261839ce.24dbe6",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[0].precipProbability * 100 & \"%\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 620,
+        "wires": [
+            [
+                "31117e6b.1cee22"
+            ]
+        ]
+    },
+    {
+        "id": "5b800211.20df6c",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Today Precip",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "today_precip",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 620,
+        "wires": [
+            [
+                "261839ce.24dbe6"
+            ]
+        ]
+    },
+    {
+        "id": "f4127e83.84508",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 620,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "31117e6b.1cee22",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "func": "switch (msg.payload.daily.data[0].precipType) {\n    case \"clear-day\":\n        msg.display.icon = 13;\n        break;\n    case \"clear-night\":\n        msg.display.icon = 14;\n        break;\n    case \"rain\":\n        msg.display.icon = 15;\n        break;\n    case \"snow\":\n        msg.display.icon = 16;\n        break;\n    case \"sleet\":\n        msg.display.icon = 17;\n        break;\n    case \"wind\":\n        msg.display.icon = 18;\n        break;\n    case \"fog\":\n        msg.display.icon = 19;\n        break;\n    case \"cloudy\":\n        msg.display.icon = 20;\n        break;\n    case \"partly-cloudy-day\":\n        msg.display.icon = 21;\n        break;\n    case \"partly-cloudy-night\":\n        msg.display.icon = 22;\n        break;\n    default:\n        msg.display.icon = 15;\n        break;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 620,
+        "wires": [
+            [
+                "f4127e83.84508"
+            ]
+        ]
+    },
+    {
+        "id": "56379a41.57a564",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Provider Debug",
+        "func": "var providers = new Map();\nif (context.get(\"providers\")!==undefined) {\n    providers=context.get(\"providers\");\n}\n\n// This topic sent by all providers to update the data in the context\nif (msg.topic===\"provider_update\") {\n    if (providers.has(msg.display.provider)) {\n        providers.delete(msg.display.provider);\n    }\n    providers.set(msg.display.provider,{\"content\" : msg.display.content, \"icon\": msg.display.icon, \"color\": msg.display.color});\n    context.set(\"providers\",providers);\n    node.status({fill:\"blue\",shape:\"ring\",text:\"Provider \"+msg.display.provider+\" stored\"});\n}\n\nmsg.payload = [];\nfor (var [key, value] of providers) {\n    msg.payload.push({\"provider\": key, \"content\": value});\n}\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 980,
+        "y": 1700,
+        "wires": [
+            [
+                "e503f97e.31e068"
+            ]
+        ]
+    },
+    {
+        "id": "d986d9dd.514ec8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[0].cloudCover * 100 & \"%\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 660,
+        "wires": [
+            [
+                "a13f3f80.988ba"
+            ]
+        ]
+    },
+    {
+        "id": "bc16baf2.efbd88",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Today Cloud",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "today_cloud",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 660,
+        "wires": [
+            [
+                "d986d9dd.514ec8"
+            ]
+        ]
+    },
+    {
+        "id": "a01f9f89.4666b",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 660,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "a13f3f80.988ba",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "20",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 660,
+        "wires": [
+            [
+                "a01f9f89.4666b"
+            ]
+        ]
+    },
+    {
+        "id": "9ff0452a.cdb978",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[1].precipProbability * 100 & \"%\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 860,
+        "wires": [
+            [
+                "617f8fe5.02178"
+            ]
+        ]
+    },
+    {
+        "id": "64539b92.5b3aa4",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Tomorrow Precip",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "tomorrow_precip",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 650,
+        "y": 860,
+        "wires": [
+            [
+                "9ff0452a.cdb978"
+            ]
+        ]
+    },
+    {
+        "id": "d06c9269.d17b8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 860,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "617f8fe5.02178",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "func": "switch (msg.payload.daily.data[1].precipType) {\n    case \"clear-day\":\n        msg.display.icon = 13;\n        break;\n    case \"clear-night\":\n        msg.display.icon = 14;\n        break;\n    case \"rain\":\n        msg.display.icon = 29;\n        break;\n    case \"snow\":\n        msg.display.icon = 30;\n        break;\n    case \"sleet\":\n        msg.display.icon = 31;\n        break;\n    case \"wind\":\n        msg.display.icon = 18;\n        break;\n    case \"fog\":\n        msg.display.icon = 19;\n        break;\n    case \"cloudy\":\n        msg.display.icon = 20;\n        break;\n    case \"partly-cloudy-day\":\n        msg.display.icon = 21;\n        break;\n    case \"partly-cloudy-night\":\n        msg.display.icon = 22;\n        break;\n    default:\n        msg.display.icon = 15;\n        break;\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 860,
+        "wires": [
+            [
+                "d06c9269.d17b8"
+            ]
+        ]
+    },
+    {
+        "id": "8f9fd20a.ee852",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "msg.payload.daily.data[1].cloudCover * 100 & \"%\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 860,
+        "y": 900,
+        "wires": [
+            [
+                "c676f082.3d1c9"
+            ]
+        ]
+    },
+    {
+        "id": "b8abecdf.53e29",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Today Cloud",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "tomorrow_cloud",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 900,
+        "wires": [
+            [
+                "8f9fd20a.ee852"
+            ]
+        ]
+    },
+    {
+        "id": "33cdf20d.4ee32e",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 900,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "c676f082.3d1c9",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "32",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 900,
+        "wires": [
+            [
+                "33cdf20d.4ee32e"
+            ]
+        ]
+    },
+    {
+        "id": "811dc8f9.1a7118",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Sunrise",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "sunrise",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 960,
+        "wires": [
+            [
+                "ffb6f61b.e94658"
+            ]
+        ]
+    },
+    {
+        "id": "89255574.9da558",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 960,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "8f5c2b0e.19e658",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "34",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 960,
+        "wires": [
+            [
+                "89255574.9da558"
+            ]
+        ]
+    },
+    {
+        "id": "ffb6f61b.e94658",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "// Update the status with current timestamp\nvar now = new Date();\nnow.setTime(msg.payload.daily.data[0].sunriseTime*1000);\nvar hh = now.getHours() < 10 ? \"0\" + now.getHours() : now.getHours();\nvar mmm  = now.getMinutes() < 10 ? \"0\" + now.getMinutes() : now.getMinutes();\nmsg.display.content = hh + \":\" + mmm;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 860,
+        "y": 960,
+        "wires": [
+            [
+                "8f5c2b0e.19e658"
+            ]
+        ]
+    },
+    {
+        "id": "ec66636d.dfd75",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Sunset",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "sunset",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 1000,
+        "wires": [
+            [
+                "2e77bbb6.11ac24"
+            ]
+        ]
+    },
+    {
+        "id": "61a11f70.ef892",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 1000,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "d65f3333.f183b",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "33",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 1000,
+        "wires": [
+            [
+                "61a11f70.ef892"
+            ]
+        ]
+    },
+    {
+        "id": "2e77bbb6.11ac24",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "// Update the status with current timestamp\nvar now = new Date();\nnow.setTime(msg.payload.daily.data[0].sunsetTime*1000);\nvar hh = now.getHours() < 10 ? \"0\" + now.getHours() : now.getHours();\nvar mmm  = now.getMinutes() < 10 ? \"0\" + now.getMinutes() : now.getMinutes();\nmsg.display.content = hh + \":\" + mmm;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 860,
+        "y": 1000,
+        "wires": [
+            [
+                "d65f3333.f183b"
+            ]
+        ]
+    },
+    {
+        "id": "e503f97e.31e068",
+        "type": "template",
+        "z": "cb01a5f.948b458",
+        "name": "Format",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<table border=\"1\">\n    <tr><th>Provider</th><th>Icon</th><th>Color</th><th>Content</th></tr>\n    {{#payload}}\n        <tr class=\"\">\n            <td>{{provider}}</td>\n            <td>{{content.icon}}</td>\n            <td>{{content.color}}</td>\n            <td>{{content.content}}</td>\n        </tr>\n    {{/payload}}\n</table>\n",
+        "output": "str",
+        "x": 1160,
+        "y": 1700,
+        "wires": [
+            [
+                "a83bbf2c.b900e"
+            ]
+        ]
+    },
+    {
+        "id": "a83bbf2c.b900e",
+        "type": "ui_template",
+        "z": "cb01a5f.948b458",
+        "group": "2126b2ab.37b41e",
+        "name": "Provider dump",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1340,
+        "y": 1700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cab01b6d.3b31e8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Daytime Weekday Recipe",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recipe\":[{\"provider\":\"facebook_likes\",\"duration\":5},{\"provider\":\"instagram\",\"duration\":5},{\"provider\":\"pvoutput\",\"duration\":5},{\"provider\":\"currently_temp\",\"duration\":5},{\"provider\":\"today_tempmin\",\"duration\":5},{\"provider\":\"today_tempmax\",\"duration\":5},{\"provider\":\"today_wind\",\"duration\":5},{\"provider\":\"today_cloud\",\"duration\":5},{\"provider\":\"today_precip\",\"duration\":5},{\"provider\":\"sunrise\",\"duration\":5},{\"provider\":\"sunset\",\"duration\":5}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 1880,
+        "wires": [
+            [
+                "280e8e29.499dd2"
+            ]
+        ]
+    },
+    {
+        "id": "27cd4f50.2e939",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Evening Weekday Recipe",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recipe\":[{\"provider\":\"facebook_likes\",\"duration\":5},{\"provider\":\"instagram\",\"duration\":5},{\"provider\":\"pvoutput\",\"duration\":5},{\"provider\":\"currently_temp\",\"duration\":5},{\"provider\":\"tomorrow_date\",\"duration\":5},{\"provider\":\"tomorrow_tempmin\",\"duration\":5},{\"provider\":\"tomorrow_tempmax\",\"duration\":5},{\"provider\":\"tomorrow_wind\",\"duration\":5},{\"provider\":\"tomorrow_cloud\",\"duration\":5},{\"provider\":\"tomorrow_precip\",\"duration\":5},{\"provider\":\"sunrise\",\"duration\":5},{\"provider\":\"sunset\",\"duration\":5}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 2000,
+        "wires": [
+            [
+                "280e8e29.499dd2"
+            ]
+        ]
+    },
+    {
+        "id": "9e0e6b04.78ebb8",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Midnight",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 00 * * *",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1860,
+        "wires": [
+            [
+                "dbc104d0.3212d8"
+            ]
+        ]
+    },
+    {
+        "id": "edf8c4a6.fa2d38",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "18:00",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "00 18 * * *",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 1980,
+        "wires": [
+            [
+                "cbed5d3e.7743d",
+                "669b09f8.3e0828"
+            ]
+        ]
+    },
+    {
+        "id": "21a83e85.d83922",
+        "type": "template",
+        "z": "cb01a5f.948b458",
+        "name": "Format",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<table border=\"1\">\n    <tr><th>Provider</th><th>Duration</th></tr>\n    {{#payload.recipe}}\n        <tr class=\"\">\n            <td>{{provider}}</td>\n            <td>{{duration}}</td>\n        </tr>\n    {{/payload.recipe}}\n</table>\n",
+        "output": "str",
+        "x": 960,
+        "y": 1760,
+        "wires": [
+            [
+                "1f0bb628.3e171a"
+            ]
+        ]
+    },
+    {
+        "id": "1f0bb628.3e171a",
+        "type": "ui_template",
+        "z": "cb01a5f.948b458",
+        "group": "558c8a63.67a884",
+        "name": "Recipe dump",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 1130,
+        "y": 1760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3a050a81.9050e6",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "// Convert wind bearing to direction\nvar WindDirection = \"\";\nif (msg.payload.daily.data[0].windBearing>=0 && msg.payload.daily.data[0].windBearing<22.5) {\n    WindDirection = \"N\";\n}\nif (msg.payload.daily.data[0].windBearing>=22.5 && msg.payload.daily.data[0].windBearing<67.5) {\n    WindDirection = \"NO\";\n}\nif (msg.payload.daily.data[0].windBearing>=67.5 && msg.payload.daily.data[0].windBearing<112.5) {\n    WindDirection = \"O\";\n}\nif (msg.payload.daily.data[0].windBearing>=112.5 && msg.payload.daily.data[0].windBearing<157.5) {\n    WindDirection = \"ZO\";\n}\nif (msg.payload.daily.data[0].windBearing>=157.5 && msg.payload.daily.data[0].windBearing<202.5) {\n    WindDirection = \"Z\";\n}\nif (msg.payload.daily.data[0].windBearing>=202.5 && msg.payload.daily.data[0].windBearing<247.5) {\n    WindDirection = \"ZW\";\n}\nif (msg.payload.daily.data[0].windBearing>=247.5 && msg.payload.daily.data[0].windBearing<292.5) {\n    WindDirection = \"W\";\n}\nif (msg.payload.daily.data[0].windBearing>=292.5 && msg.payload.daily.data[0].windBearing<337.5) {\n    WindDirection = \"NW\";\n}\nif (msg.payload.daily.data[0].windBearing>=337.5) {\n    WindDirection = \"N\";\n}\nmsg.display.content = Math.floor(msg.payload.daily.data[0].windSpeed,0) + \" \" + WindDirection;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 860,
+        "y": 580,
+        "wires": [
+            [
+                "d4fe1bee.6dff38"
+            ]
+        ]
+    },
+    {
+        "id": "c262dbc8.bd9838",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "// Convert wind bearing to direction\nvar WindDirection = \"\";\nif (msg.payload.daily.data[1].windBearing>=0 && msg.payload.daily.data[1].windBearing<22.5) {\n    WindDirection = \"N\";\n}\nif (msg.payload.daily.data[1].windBearing>=22.5 && msg.payload.daily.data[1].windBearing<67.5) {\n    WindDirection = \"NO\";\n}\nif (msg.payload.daily.data[1].windBearing>=67.5 && msg.payload.daily.data[1].windBearing<112.5) {\n    WindDirection = \"O\";\n}\nif (msg.payload.daily.data[1].windBearing>=112.5 && msg.payload.daily.data[1].windBearing<157.5) {\n    WindDirection = \"ZO\";\n}\nif (msg.payload.daily.data[1].windBearing>=157.5 && msg.payload.daily.data[1].windBearing<202.5) {\n    WindDirection = \"Z\";\n}\nif (msg.payload.daily.data[1].windBearing>=202.5 && msg.payload.daily.data[1].windBearing<247.5) {\n    WindDirection = \"ZW\";\n}\nif (msg.payload.daily.data[1].windBearing>=247.5 && msg.payload.daily.data[1].windBearing<292.5) {\n    WindDirection = \"W\";\n}\nif (msg.payload.daily.data[1].windBearing>=292.5 && msg.payload.daily.data[1].windBearing<337.5) {\n    WindDirection = \"NW\";\n}\nif (msg.payload.daily.data[1].windBearing>=337.5) {\n    WindDirection = \"N\";\n}\nmsg.display.content = Math.floor(msg.payload.daily.data[1].windSpeed,0) + \" \" + WindDirection;\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 860,
+        "y": 780,
+        "wires": [
+            [
+                "9ba5e3fd.228c"
+            ]
+        ]
+    },
+    {
+        "id": "b364a30c.520cb",
+        "type": "debug",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "93f9de44.cd5c7",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "Stock Vinci",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://finance.google.com/finance?q=EPA%3ADG&output=json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 310,
+        "y": 1120,
+        "wires": [
+            [
+                "b5edf19f.f0a58"
+            ]
+        ]
+    },
+    {
+        "id": "a3ae058e.843fd8",
+        "type": "json",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "x": 670,
+        "y": 1120,
+        "wires": [
+            [
+                "7cde3761.2d9208"
+            ]
+        ]
+    },
+    {
+        "id": "7cde3761.2d9208",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Provider",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "stock_hcl",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1120,
+        "wires": [
+            [
+                "93f6a079.93fac"
+            ]
+        ]
+    },
+    {
+        "id": "93f6a079.93fac",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "payload.l",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 1120,
+        "wires": [
+            [
+                "1907cb.c6d59835"
+            ]
+        ]
+    },
+    {
+        "id": "1907cb.c6d59835",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "37",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 1120,
+        "wires": [
+            [
+                "7b769fd8.c4d74"
+            ]
+        ]
+    },
+    {
+        "id": "7b769fd8.c4d74",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "$substring(msg.payload.c,0,1) = '-' ? 1 : 2",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1270,
+        "y": 1120,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "7358cc28.d93aa4",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "d": true,
+        "name": "Every 1h",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 133.9999885559082,
+        "y": 1120.7499809265137,
+        "wires": [
+            [
+                "93f9de44.cd5c7"
+            ]
+        ]
+    },
+    {
+        "id": "b5edf19f.f0a58",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$substring(msg.payload, 6)\t",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$substring(msg.payload, 0, $length(msg.payload)-2)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 1120,
+        "wires": [
+            [
+                "a3ae058e.843fd8"
+            ]
+        ]
+    },
+    {
+        "id": "69403d8.cc955c4",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "Stock Microsoft",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://finance.google.com/finance?q=NASDAQ%3AMSFT&output=json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 320,
+        "y": 1160,
+        "wires": [
+            [
+                "30734438.86a18c"
+            ]
+        ]
+    },
+    {
+        "id": "4bb4885e.cb3bd8",
+        "type": "json",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "x": 670,
+        "y": 1160,
+        "wires": [
+            [
+                "6ada1c3d.71de44"
+            ]
+        ]
+    },
+    {
+        "id": "6ada1c3d.71de44",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Provider",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "stock_vestas",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1160,
+        "wires": [
+            [
+                "8fb312de.6738c"
+            ]
+        ]
+    },
+    {
+        "id": "8fb312de.6738c",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "payload.l",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 1160,
+        "wires": [
+            [
+                "a9f7e22c.c7df7"
+            ]
+        ]
+    },
+    {
+        "id": "a9f7e22c.c7df7",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "38",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 1160,
+        "wires": [
+            [
+                "4185c9db.bef468"
+            ]
+        ]
+    },
+    {
+        "id": "4185c9db.bef468",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "$substring(msg.payload.c,0,1) = '-' ? 1 : 2",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1270,
+        "y": 1160,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "9915b609.be70d8",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "d": true,
+        "name": "Every 1h",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 133.9999885559082,
+        "y": 1160.7499809265137,
+        "wires": [
+            [
+                "69403d8.cc955c4"
+            ]
+        ]
+    },
+    {
+        "id": "30734438.86a18c",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$substring(msg.payload, 6)\t",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$substring(msg.payload, 0, $length(msg.payload)-2)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 1160,
+        "wires": [
+            [
+                "4bb4885e.cb3bd8"
+            ]
+        ]
+    },
+    {
+        "id": "d758bae.8cfaa48",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "Stock Apple",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://finance.google.com/finance?q=NASDAQ%3AAPL&output=json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 310,
+        "y": 1200,
+        "wires": [
+            [
+                "feb56efe.f2d7"
+            ]
+        ]
+    },
+    {
+        "id": "9363537c.190ab",
+        "type": "json",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "x": 670,
+        "y": 1200,
+        "wires": [
+            [
+                "f61f631f.868e7"
+            ]
+        ]
+    },
+    {
+        "id": "f61f631f.868e7",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Provider",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "stock_linde",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1200,
+        "wires": [
+            [
+                "42be123e.e005ac"
+            ]
+        ]
+    },
+    {
+        "id": "42be123e.e005ac",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "payload.l",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 1200,
+        "wires": [
+            [
+                "d32cf0ea.1edf2"
+            ]
+        ]
+    },
+    {
+        "id": "d32cf0ea.1edf2",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "39",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 1200,
+        "wires": [
+            [
+                "5a3a3e2e.e0ce5"
+            ]
+        ]
+    },
+    {
+        "id": "5a3a3e2e.e0ce5",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "$substring(msg.payload.c,0,1) = '-' ? 1 : 2",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1270,
+        "y": 1200,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "d7fb8b5a.201a08",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "d": true,
+        "name": "Every 1h",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 133.9999885559082,
+        "y": 1200.7499809265137,
+        "wires": [
+            [
+                "d758bae.8cfaa48"
+            ]
+        ]
+    },
+    {
+        "id": "feb56efe.f2d7",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$substring(msg.payload, 6)\t",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$substring(msg.payload, 0, $length(msg.payload)-2)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 1200,
+        "wires": [
+            [
+                "9363537c.190ab"
+            ]
+        ]
+    },
+    {
+        "id": "dbc104d0.3212d8",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Weekday",
+        "func": "// This function just returns the weekday\n// in the payload to be used in a switch\n// later in the flow\n// also returns a msg.weekend which is true if\n// it is a weekend\nvar now = new Date();\nmsg.payload = now.getDay();\nif ((now.getDay()===0)||(now.getDay()===6)) {\n   msg.weekend = true; \n} else {\n    msg.weekend = false;\n}\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 1860,
+        "wires": [
+            [
+                "c2b25345.42e73"
+            ]
+        ]
+    },
+    {
+        "id": "cce3e7e5.dd1078",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Daytime Weekend Recipe",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recipe\":[{\"provider\":\"facebook_likes\",\"duration\":5},{\"provider\":\"instagram\",\"duration\":5},{\"provider\":\"pvoutput\",\"duration\":5},{\"provider\":\"currently_temp\",\"duration\":5},{\"provider\":\"today_tempmin\",\"duration\":5},{\"provider\":\"today_tempmax\",\"duration\":5},{\"provider\":\"today_wind\",\"duration\":5},{\"provider\":\"today_cloud\",\"duration\":5},{\"provider\":\"today_precip\",\"duration\":5},{\"provider\":\"solar_today\",\"duration\":5},{\"provider\":\"sunrise\",\"duration\":5},{\"provider\":\"sunset\",\"duration\":5}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 1840,
+        "wires": [
+            [
+                "280e8e29.499dd2"
+            ]
+        ]
+    },
+    {
+        "id": "4a5154d3.4fee1c",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Evening Weekend Recipe",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recipe\":[{\"provider\":\"facebook_likes\",\"duration\":5},{\"provider\":\"instagram\",\"duration\":5},{\"provider\":\"pvoutput\",\"duration\":5},{\"provider\":\"currently_temp\",\"duration\":5},{\"provider\":\"tomorrow_date\",\"duration\":5},{\"provider\":\"tomorrow_tempmin\",\"duration\":5},{\"provider\":\"tomorrow_tempmax\",\"duration\":5},{\"provider\":\"tomorrow_wind\",\"duration\":5},{\"provider\":\"tomorrow_cloud\",\"duration\":5},{\"provider\":\"tomorrow_precip\",\"duration\":5},{\"provider\":\"sunrise\",\"duration\":5},{\"provider\":\"sunset\",\"duration\":5}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 1960,
+        "wires": [
+            [
+                "280e8e29.499dd2"
+            ]
+        ]
+    },
+    {
+        "id": "c2b25345.42e73",
+        "type": "switch",
+        "z": "cb01a5f.948b458",
+        "name": "Weekend?",
+        "property": "weekend",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 550,
+        "y": 1860,
+        "wires": [
+            [
+                "cce3e7e5.dd1078"
+            ],
+            [
+                "cab01b6d.3b31e8"
+            ]
+        ],
+        "outputLabels": [
+            "Weekend",
+            "Weekday"
+        ]
+    },
+    {
+        "id": "5b4e4d63.65a174",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Recipe for testing",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recipe\":[{\"provider\":\"facebook_likes\",\"duration\":5},{\"provider\":\"instagram\",\"duration\":5}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 870,
+        "y": 2080,
+        "wires": [
+            [
+                "280e8e29.499dd2"
+            ]
+        ]
+    },
+    {
+        "id": "cbed5d3e.7743d",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Weekday",
+        "func": "// This function just returns the weekday\n// in the payload to be used in a switch\n// later in the flow\n// also returns a msg.weekend which is true if\n// it is a weekend\nvar now = new Date();\nmsg.payload = now.getDay();\nif ((now.getDay()===0)||(now.getDay()===6)) {\n   msg.weekend = true; \n} else {\n    msg.weekend = false;\n}\nreturn msg; \n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 1980,
+        "wires": [
+            [
+                "b6b75792.54b1d8"
+            ]
+        ]
+    },
+    {
+        "id": "b6b75792.54b1d8",
+        "type": "switch",
+        "z": "cb01a5f.948b458",
+        "name": "Weekend?",
+        "property": "weekend",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 550,
+        "y": 1980,
+        "wires": [
+            [
+                "4a5154d3.4fee1c"
+            ],
+            [
+                "27cd4f50.2e939"
+            ]
+        ],
+        "outputLabels": [
+            "Weekend",
+            "Weekday"
+        ]
+    },
+    {
+        "id": "280e8e29.499dd2",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Dummy",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1160,
+        "y": 1900,
+        "wires": [
+            [
+                "81d3128a.ec9c8"
+            ]
+        ]
+    },
+    {
+        "id": "a29aae5d.64eaa",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "Facebook page likes",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://graph.facebook.com/v8.0/701667709953865/?fields=fan_count&access_token=EAAJXzsZCPInoBAEpARmK5mtq5zuZCqkWR64ni2TvJtD0jojATX3B2jZB2Ozh2NGMsVPTZBFnZBR5d6hkEgsmiBKnowlCy7X1aZAGZA3PaJJTpToDLOc7qUf97z4rh0av9x70fo7JSPRMrgwKKD4PsqjjFPV66xioPiA6hlAbk8FnDOtpcyRcGQN",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 360,
+        "y": 120,
+        "wires": [
+            [
+                "b4ce44ed.bf7238"
+            ]
+        ]
+    },
+    {
+        "id": "9e950049.6cbfd",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Every 1h",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 120,
+        "wires": [
+            [
+                "a29aae5d.64eaa"
+            ]
+        ]
+    },
+    {
+        "id": "b4ce44ed.bf7238",
+        "type": "json",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "x": 550,
+        "y": 120,
+        "wires": [
+            [
+                "2177a278.aeabce"
+            ]
+        ]
+    },
+    {
+        "id": "2177a278.aeabce",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Provider",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "facebook_likes",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 120,
+        "wires": [
+            [
+                "79e35f91.c96d1"
+            ]
+        ]
+    },
+    {
+        "id": "79e35f91.c96d1",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "payload.fan_count",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 120,
+        "wires": [
+            [
+                "ee27c2a4.7f1ba"
+            ]
+        ]
+    },
+    {
+        "id": "ee27c2a4.7f1ba",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "7",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 120,
+        "wires": [
+            [
+                "da45c2fa.a4077"
+            ]
+        ]
+    },
+    {
+        "id": "da45c2fa.a4077",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "4",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 120,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "31e0a06b.054f2",
+        "type": "debug",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1310,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "95b85ae8.9d72d8",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Every 5m",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "300",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 160,
+        "wires": [
+            [
+                "84d33622.6329a8"
+            ]
+        ]
+    },
+    {
+        "id": "84d33622.6329a8",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "PVOutput",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://pvoutput.org/service/r2/getstatus.jsp?sid=15252&key=April2006",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 320,
+        "y": 160,
+        "wires": [
+            [
+                "8d4d0e90.b34"
+            ]
+        ]
+    },
+    {
+        "id": "8d4d0e90.b34",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Provider",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "pvoutput",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 160,
+        "wires": [
+            [
+                "6ef97bad.fcf204"
+            ]
+        ]
+    },
+    {
+        "id": "107c340e.6645ac",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0xffff, 0xffff, 0xffff, 0xffff, 0x0000, 0x0000, 0x0000, 0xffff, 0x0000, 0x0000, 0x0000, 0x0000, 0xffff, 0x0000, 0xffff, 0x0000, 0x0000, 0xffff, 0xffff, 0x0000, 0x0000, 0xffff, 0x0000, 0x0000, 0xffff, 0x0000, 0x0000, 0xffff, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0xffff, 0xffff, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "24",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 160,
+        "wires": [
+            [
+                "97beb248.28b2d"
+            ]
+        ]
+    },
+    {
+        "id": "97beb248.28b2d",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 160,
+        "wires": [
+            [
+                "f69eb571.80ff48"
+            ]
+        ]
+    },
+    {
+        "id": "6ef97bad.fcf204",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "var output = msg.payload.split(\",\")[2];\n\noutput=output/1000\nvar newvalue= output.toFixed(2)\n\nmsg.display.content = newvalue + \"kW\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 840,
+        "y": 160,
+        "wires": [
+            [
+                "107c340e.6645ac"
+            ]
+        ]
+    },
+    {
+        "id": "cccbf387.2a78a",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "192.168.55.54",
+        "payloadType": "str",
+        "x": 130,
+        "y": 1440,
+        "wires": [
+            [
+                "636f35f5.c64f0c"
+            ]
+        ]
+    },
+    {
+        "id": "9e22fe53.272f5",
+        "type": "http request",
+        "z": "cb01a5f.948b458",
+        "name": "Instagram followers",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://www.instagram.com/kinderboerderijommen/",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 350,
+        "y": 200,
+        "wires": [
+            [
+                "756a6802.c94a3"
+            ]
+        ]
+    },
+    {
+        "id": "d9433d5b.05da18",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Provider",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.provider",
+                "pt": "msg",
+                "to": "instagram",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 200,
+        "wires": [
+            [
+                "e6c8f44b.ec6a18"
+            ]
+        ]
+    },
+    {
+        "id": "1fa17d6d.c5d47b",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "if (msg.payload.includes(\"userInteractionCount\")){\n    return msg;\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 520,
+        "y": 280,
+        "wires": [
+            [
+                "fd69d9c9.1d2b68"
+            ]
+        ]
+    },
+    {
+        "id": "97d2975b.f18c9",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Every 30m",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1800",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 200,
+        "wires": [
+            [
+                "9e22fe53.272f5"
+            ]
+        ]
+    },
+    {
+        "id": "756a6802.c94a3",
+        "type": "split",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 530,
+        "y": 200,
+        "wires": [
+            [
+                "1fa17d6d.c5d47b"
+            ]
+        ]
+    },
+    {
+        "id": "fd69d9c9.1d2b68",
+        "type": "json",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "x": 690,
+        "y": 280,
+        "wires": [
+            [
+                "d9433d5b.05da18"
+            ]
+        ]
+    },
+    {
+        "id": "143b0b5f.d1c1dd",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.content",
+                "pt": "msg",
+                "to": "payload.mainEntityofPage.interactionStatistic.userInteractionCount",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "907849aa.5f43a",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Icon",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.icon",
+                "pt": "msg",
+                "to": "8",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 200,
+        "wires": [
+            [
+                "4603983f.d74148"
+            ]
+        ]
+    },
+    {
+        "id": "d81ddd5f.3a8058",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "4",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 591,
+        "y": 467,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4603983f.d74148",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Color",
+        "rules": [
+            {
+                "t": "set",
+                "p": "display.color",
+                "pt": "msg",
+                "to": "4",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 200,
+        "wires": [
+            [
+                "f69eb571.80ff48",
+                "31e0a06b.054f2"
+            ]
+        ]
+    },
+    {
+        "id": "8779b3f7.51592",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Default",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 2040,
+        "wires": [
+            [
+                "dbc104d0.3212d8"
+            ]
+        ]
+    },
+    {
+        "id": "42735847.dd3a88",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "Default",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 300,
+        "wires": [
+            [
+                "a29aae5d.64eaa",
+                "84d33622.6329a8",
+                "9e22fe53.272f5",
+                "31e9334f.68831c"
+            ]
+        ]
+    },
+    {
+        "id": "e6c8f44b.ec6a18",
+        "type": "function",
+        "z": "cb01a5f.948b458",
+        "name": "Content",
+        "func": "var output = msg.payload.mainEntityofPage.interactionStatistic.userInteractionCount;\n\nmsg.display.content = \" \" + output;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 840,
+        "y": 240,
+        "wires": [
+            [
+                "907849aa.5f43a"
+            ]
+        ]
+    },
+    {
+        "id": "60cca090.1e18d",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set brightness topic",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "brightness_update",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 1440,
+        "wires": [
+            [
+                "b03ef6f5.cea938"
+            ]
+        ]
+    },
+    {
+        "id": "231b41b2.9b214e",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Brightness to 40",
+        "rules": [
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "40",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1720,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "7a345ded.139cf4",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "40",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "192.168.55.24",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1720,
+        "wires": [
+            [
+                "231b41b2.9b214e"
+            ]
+        ]
+    },
+    {
+        "id": "50e7def9.0f6be",
+        "type": "mqtt in",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "topic": "/nrmetric/update",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "cea5258a.b34038",
+        "x": 149.89986419677734,
+        "y": 1299.7999696731567,
+        "wires": [
+            [
+                "636f35f5.c64f0c"
+            ]
+        ]
+    },
+    {
+        "id": "e85b6537.b4b3d8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Brightness to 30",
+        "rules": [
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "30",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1680,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "6f4749b.6c6ceb8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Brightness to 10",
+        "rules": [
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "10",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1640,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "b9d583d0.95537",
+        "type": "poll-state",
+        "z": "cb01a5f.948b458",
+        "name": "Naar bed",
+        "server": "e4d2fd4d.1afaf",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "updateinterval": "60",
+        "updateIntervalUnits": "seconds",
+        "outputinitially": false,
+        "outputonchanged": false,
+        "entity_id": "input_boolean.naarbedactivated",
+        "state_type": "str",
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "x": 80,
+        "y": 1560,
+        "wires": [
+            [
+                "f47d3301.256fe",
+                "8133f212.ecf73"
+            ],
+            [
+                "8133f212.ecf73"
+            ]
+        ]
+    },
+    {
+        "id": "bb6de422.1e2948",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Brightness to 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "brightness",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 1600,
+        "wires": [
+            [
+                "60cca090.1e18d"
+            ]
+        ]
+    },
+    {
+        "id": "eba2f7db.47f338",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "0",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "192.168.55.24",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1600,
+        "wires": [
+            [
+                "f47d3301.256fe"
+            ]
+        ]
+    },
+    {
+        "id": "f47d3301.256fe",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1600,
+        "wires": [
+            [
+                "bb6de422.1e2948"
+            ]
+        ]
+    },
+    {
+        "id": "669b09f8.3e0828",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1640,
+        "wires": [
+            [
+                "6f4749b.6c6ceb8"
+            ]
+        ]
+    },
+    {
+        "id": "118e9886.e5f027",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1680,
+        "wires": [
+            [
+                "e85b6537.b4b3d8"
+            ]
+        ]
+    },
+    {
+        "id": "6236e82a.e44eb8",
+        "type": "change",
+        "z": "cb01a5f.948b458",
+        "name": "Set Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "192.168.55.24",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 230,
+        "y": 1720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ffa54214.fafce",
+        "type": "inject",
+        "z": "cb01a5f.948b458",
+        "name": "30",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "192.168.55.24",
+        "payloadType": "str",
+        "x": 90,
+        "y": 1680,
+        "wires": [
+            [
+                "118e9886.e5f027"
+            ]
+        ]
+    },
+    {
+        "id": "8133f212.ecf73",
+        "type": "debug",
+        "z": "cb01a5f.948b458",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 230,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "2126b2ab.37b41e",
+        "type": "ui_group",
+        "name": "Providers",
+        "tab": "991b0faf.6bef8",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "558c8a63.67a884",
+        "type": "ui_group",
+        "name": "Recipe",
+        "tab": "991b0faf.6bef8",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "cea5258a.b34038",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "",
+        "port": "1883",
+        "clientid": "node-red",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "e4d2fd4d.1afaf",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": false,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
+    },
+    {
+        "id": "991b0faf.6bef8",
+        "type": "ui_tab",
+        "name": "NRMetric",
+        "icon": "settings system daydream"
+    }
+]
